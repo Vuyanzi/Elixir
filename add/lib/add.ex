@@ -1,18 +1,13 @@
 defmodule Add do
-  @moduledoc """
-  Documentation for Add.
-  """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Add.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def fetch do
+    url = "https://jsonplaceholder.typicode.com/todos"
+    res =  case HTTPoison.get(url) do
+        {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
+           body
+        _ -> IO.puts "There was an error"
+      end
+  body = JSON.decode(res) |> elem(1)
+  Enum.map(body, fn x -> x["title"] end)
   end
 end

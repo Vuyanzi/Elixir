@@ -22,7 +22,7 @@ defmodule Add.MixProject do
   defp deps do
     [
        {:httpoison, "~> 1.4"},
-        {:poison, "~> 2.0"}
+        {:json, "~> 1.2"}
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
   end
